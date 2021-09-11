@@ -38,6 +38,8 @@ jobs:
         run: |
           docker build ./server -t api-server
       - name: docker push
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
         run: |
           docker push $DOCKER_USER/react-app
           docker push $DOCKER_USER/api-server
