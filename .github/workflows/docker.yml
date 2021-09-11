@@ -27,10 +27,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: docker build react
         run: |
-          docker build ./client -t react-app
+          docker build ./client -t joshcoleartisan/react-app:1.0.0
       - name: docker build node server
         run: |
-          docker build ./server -t api-server
+          docker build ./server -t joshcoleartisan/api-server:1.0.0
       - name: docker login
 #         env:
 #           DOCKER_USER: ${{ secrets.DOCKER_USER }}
@@ -39,5 +39,5 @@ jobs:
           docker login -u joshcoleartisan -p Jg1014212@
       - name: docker push
         run: |
-          docker push react-app
-          docker push api-server
+          docker push joshcoleartisan/react-app:1.0.0
+          docker push joshcoleartisan/api-server:1.0.0
