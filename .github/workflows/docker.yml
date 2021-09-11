@@ -37,3 +37,7 @@ jobs:
       - name: docker build node server
         run: |
           docker build ./server -t api-server
+      - name: docker push
+        run: |
+          docker push react-app
+          docker push api-server
