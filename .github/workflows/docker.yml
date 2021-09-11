@@ -7,8 +7,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ develop ]
+#   pull_request:
+#     branches: [ develop ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -39,5 +39,5 @@ jobs:
           docker login -u joshcoleartisan -p Jg1014212@
       - name: docker push
         run: |
-          docker push joshcoleartisan/react-app
-          docker push joshcoleartisan/api-server
+          docker push react-app
+          docker push api-server
