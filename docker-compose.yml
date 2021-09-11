@@ -1,15 +1,14 @@
 version: "3.8"
 services:
   react-app:
-    image: react-app
+    image: joshcoleartisan/react-app:1.0.0
     restart: always
     build: ./client/
     stdin_open: true
     ports:
       - "3000:3000"
-    depends_on: api-server
   api-server:
-    image: api-server
+    image: joshcoleartisan/api-server:1.0.0
     restart: always
     build: ./server/
     ports:
