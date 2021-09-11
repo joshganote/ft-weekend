@@ -39,5 +39,5 @@ jobs:
           docker login -u joshcoleartisan -p Jg1014212@
       - name: docker push
         run: |
-          docker push joshcoleartisan/react-app:latest
-          docker push joshcoleartisan/api-server:latest
+          docker push react-app:latest
+          docker push api-server:latest
