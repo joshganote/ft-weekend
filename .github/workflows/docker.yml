@@ -32,11 +32,11 @@ jobs:
         run: |
           docker build ./server -t joshcoleartisan/api-server:1.0.0
       - name: docker login
-#         env:
-#           DOCKER_USER: ${{ secrets.DOCKER_USER }}
-#           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          docker login -u joshcoleartisan -p Jg1014212@
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: docker push
         run: |
           docker push joshcoleartisan/react-app:1.0.0
