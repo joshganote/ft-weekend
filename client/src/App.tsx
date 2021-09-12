@@ -1,19 +1,25 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import axios from "axios";
 
 function App() {
+  const [data, setData] = useState([]);
 
-  const api = axios.create({
-    baseURL: `http://localhost:5000/`
-  })
+  const params = {
+    domainName: "google.com",
+    apiKey: "at_qLpgWjeDFgzUK0RAzTP3Wp3HM7FFr",
+  }
 
   useEffect(() => {
-    api.get('/').then(res => {
-      console.log(res.data);
-    })
-  })
+    axios
+      .get(`http://localhost:5000/getApiRequest?domainName=${params.domainName}&apiKey=${params.apiKey}`)
+      .then((res) => {
+        setData(res.data);
+      });
+  }, []);
+
+  console.log(data);
   return (
     <div className="App">
       <header className="App-header">
