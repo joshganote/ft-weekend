@@ -10,11 +10,10 @@ app.use(
   })
 );
 
-
 let url = 'https://www.whoisxmlapi.com/whoisserver/WhoisService?';
 let parameters = {
-  domainName: 'apollo.com',
-  apiKey: 'at_qLpgWjeDFgzUK0RAzTP3Wp3HM7FFr',
+  domainName: 'google.com',
+  apiKey: 'at_tdPc3vDT0l3N51qcUM94b4KIzMJ2x',
   outputFormat: 'json'
 };
 

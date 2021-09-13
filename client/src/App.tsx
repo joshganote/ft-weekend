@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import "./App.css";
-import axios from "axios";
 import { AdminContact } from "./components/adminContact/adminContact";
-import {  useWhoisRecord } from "./hooks/useWhoisRecord";
-import { useWhoisAdminContact } from './hooks/useWhoisAdminContact';
-
+import { WhoisRecord } from "./components/whoisRecord/whoisRecord";
+import { useWhoisRecord } from "./hooks/useWhoisRecord";
+import { useWhoisAdminContact } from "./hooks/useWhoisAdminContact";
+import Terminal from "./components/terminal/terminal";
+import commands from "./commands.json";
 function App() {
-  const [domainName, setDomainName] = useState("");
-  const adminContact = useWhoisAdminContact() as any;
+  //const [domainName, setDomainName] = useState("");
   const whois = useWhoisRecord() as any;
+  const adminContact = useWhoisAdminContact() as any;
 
   /**
    * Was taking this approach when trying to call to my node server and hook up to a button
@@ -33,19 +33,29 @@ function App() {
 
   return (
     <div className="App">
-      <label>
+      <div className="grid">
+        <div className="terminal">
+          <Terminal commands={commands} />
+        </div>
+        {/* <label>
         Name:
         <input type="text" onChange={(e) => setDomainName(e.target.value)} />
       </label>
-      <button>Submit</button>
-      <AdminContact
-        name={adminContact.name}
-        street1={adminContact.street1}
-        city={adminContact.city}
-        state={adminContact.state}
-        country={adminContact.country}
-      />
-      <h1>{whois.contactEmail}</h1>
+      <button>Submit</button> */}
+        <div className="api-info">
+          <AdminContact
+            organization={adminContact.organization}
+            country={adminContact.country}
+            state={adminContact.state}
+          />
+          <WhoisRecord
+            domainName={whois.domainName}
+            contactEmail={whois.contactEmail}
+            createdDate={whois.createdDateNormalized}
+            expiresDate={whois.expiresDateNormalized}
+          />
+        </div>
+      </div>
     </div>
   );
 }
