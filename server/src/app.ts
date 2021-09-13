@@ -1,18 +1,19 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Application } from 'express';
 
 const app: Application = express();
+const querystring = require('querystring');
+const request = require('request');
 const cors = require('cors');
 app.use(
   cors({
     origin: 'http://localhost:3000'
   })
 );
-const querystring = require('querystring');
-const request = require('request');
+
 
 let url = 'https://www.whoisxmlapi.com/whoisserver/WhoisService?';
 let parameters = {
-  domainName: 'google.com',
+  domainName: 'apollo.com',
   apiKey: 'at_qLpgWjeDFgzUK0RAzTP3Wp3HM7FFr',
   outputFormat: 'json'
 };
@@ -38,5 +39,29 @@ function makeApiCall(url: any) {
     });
   });
 }
+
+/**
+ * Hey really tried to get a query string passed in but was unsuccessful.
+ * Kept getting an error of invalid URI
+ */
+// app.get('/getApiRequest', function (req, res) {
+//   let whoisUrl = 'https://www.whoisxmlapi.com/whoisserver/WhoisService?'
+//   let domainName = {
+//     domainName: req.query.domainName,
+//     apiKey: 'at_qLpgWjeDFgzUK0RAzTP3Wp3HM7FFr',
+//   };
+//   request.get(whoisUrl, {qs: domainName}, { json: true },
+//     function (error: any, response: any, body: any) {
+//       if (error) {
+//         console.log('error:', error);
+
+//     } else if(response && body) {
+//         console.log('statusCode:', response && response.statusCode); 
+//         res.json({'body': body});
+//     }
+//     }
+//   );
+// });
+
 
 app.listen(5000, () => console.log('Server Running'));
